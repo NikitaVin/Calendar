@@ -1,16 +1,30 @@
-import { useEffect, useState } from 'react';
+import { memo, useEffect, useRef, useState } from 'react';
 import { TimerBox } from './Clock.styles';
 
-export const Clock = () => {
-  const [date, setDate] = useState(new Date());
+export const Clock = memo(() => {
+  const [date, setDate] = useState(new Date().toLocaleTimeString());
+  const dateRef = useRef(new Date().toLocaleTimeString());
 
   useEffect(() => {
-    const animationId = requestAnimationFrame(() => setDate(new Date()));
+    const animation = () => {
+      const time = dateRef.current;
+      const currentTime = new Date().toLocaleTimeString();
+
+      if (time !== currentTime) {
+        dateRef.current = currentTime;
+        setDate(currentTime);
+      }
+
+      window.requestAnimationFrame(animation);
+    };
+
+    window.requestAnimationFrame(animation);
 
     return () => {
-      cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animation as unknown as number);
     };
-  }, [date]);
+  }, []);
 
-  return <TimerBox>{date.toLocaleTimeString()}</TimerBox>;
-};
+  return <TimerBox>{date}</TimerBox>;
+});
+Clock.displayName = 'Clock';

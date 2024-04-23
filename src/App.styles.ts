@@ -1,13 +1,32 @@
 import styled from '@emotion/styled';
 
-export const DivRoot = styled.div({});
+export const DivRoot = styled.div({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+});
 
 export const DivApp = styled.div<{ isLightTheme?: boolean }>({
   marginTop: '32px',
   marginBottom: '32px',
   marginLeft: '48px',
   marginRight: '48px',
-  width: '1440px',
+  width: '100%',
+  height: '100%',
+  '@media (max-width: 769px)': {
+    marginLeft: '24px',
+    marginRight: '24px',
+  },
+  '@media (max-width: 426px)': {
+    marginLeft: '16px',
+    marginRight: '16px',
+  },
+  '@media (max-width: 321px)': {
+    marginLeft: '8px',
+    marginRight: '8px',
+  },
 });
 
 export const Text = styled.span({

@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 
 export const CalendarExternalBox = styled.div({
-  width: '50%',
+  width: '40%',
   height: '75%',
   display: 'flex',
   justifyContent: 'center',
@@ -17,10 +17,9 @@ export const CalendarBox = styled.div({
   width: '75%',
   height: '75%',
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: 'space-around',
   alignItems: 'center',
   border: '1px solid #be00ff99',
   borderRadius: '5px',
-  marginTop: '10%',
   backgroundColor: '#9c347780',
 });

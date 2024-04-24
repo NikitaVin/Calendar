@@ -29,7 +29,7 @@ export const DivApp = styled.div<{ isLightTheme?: boolean }>({
   },
 });
 
-export const Text = styled.span<{ size?: string }>(
+export const Text = styled.span<{ size?: string; mrTop?: string }>(
   {
     fontWeight: '400',
     background: 'content-box',
@@ -46,6 +46,9 @@ export const Text = styled.span<{ size?: string }>(
   },
   ({ size }) => ({
     fontSize: size,
+  }),
+  ({ mrTop }) => ({
+    marginTop: mrTop,
   })
 );
 

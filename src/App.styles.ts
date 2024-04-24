@@ -29,21 +29,25 @@ export const DivApp = styled.div<{ isLightTheme?: boolean }>({
   },
 });
 
-export const Text = styled.span({
-  fontSize: '16px',
-  fontWeight: '400',
-  background: 'inherit',
-  //  color: 'inherit',
-  '@media (max-width: 769px)': {
-    fontSize: '17px',
+export const Text = styled.span<{ size?: string }>(
+  {
+    fontWeight: '400',
+    background: 'content-box',
+    color: '#FF5A30',
+    '@media (max-width: 769px)': {
+      fontSize: '33px',
+    },
+    '@media (max-width: 426px)': {
+      fontSize: '24px',
+    },
+    '@media (max-width: 321px)': {
+      fontSize: '18px',
+    },
   },
-  '@media (max-width: 426px)': {
-    fontSize: '18px',
-  },
-  '@media (max-width: 321px)': {
-    fontSize: '20px',
-  },
-});
+  ({ size }) => ({
+    fontSize: size,
+  })
+);
 
 export const ButtonText = styled.p({
   fontSize: '13px',

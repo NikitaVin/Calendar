@@ -4,14 +4,17 @@ import { SVGIcon } from '../../assets/icons/constansIcon';
 
 interface Ibutton {
   onClick?: () => void;
-  iconForButton: string;
+  iconForButton?: string;
   colorIcon?: string;
+  children?: JSX.Element;
+  mrTop?: string;
 }
 
-export const Button: FC<Ibutton> = ({ onClick, iconForButton, colorIcon }) => {
+export const Button: FC<Ibutton> = ({ onClick, iconForButton, colorIcon, children, mrTop }) => {
   return (
-    <ButtonWrapper>
-      <SVGIcon icons={iconForButton} color={colorIcon} onClick={onClick} />
+    <ButtonWrapper onClick={onClick} mrTop={mrTop}>
+      <SVGIcon icons={iconForButton} color={colorIcon} />
+      {children}
     </ButtonWrapper>
   );
 };

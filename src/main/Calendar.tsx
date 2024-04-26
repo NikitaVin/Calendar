@@ -80,7 +80,7 @@ export const Calendar = () => {
         )}
       </CalendarBox>
 
-      <Button onClick={onClickChangeMonth} mrTop="6.5%">
+      <Button onClick={onClickChangeMonth} mrTop="6.5%" disabled={isClickDay}>
         <Text size="50px">{months[monthNumber]}</Text>
       </Button>
 

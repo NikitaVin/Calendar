@@ -40,11 +40,10 @@ export const Calendar = () => {
 
   return (
     <CalendarExternalBox>
-      <Button>
-        <Text size="50px" mrTop="5%">
-          {calendarDate.getFullYear()}
-        </Text>
-      </Button>
+      <Text size="50px" mrTop="5%">
+        {calendarDate.getFullYear()}
+      </Text>
+
       <CalendarBox>
         {isClickDay ? (
           <MonthDays monthNumber={monthNumber} onClick={onClickMain} />

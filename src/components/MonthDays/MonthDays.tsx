@@ -1,13 +1,16 @@
 import { FC, useState } from 'react';
-import { DayName, MonthDaysWrapper } from './MonthDays.styles';
+import { DayName, MonthDaysWrapper, Wrapper } from './MonthDays.styles';
 import { shortDays } from '../../assets/constants/WeekDays';
 import { DAYS, DAYS_LEAP } from '../../assets/constants/DaysInMonth';
+import { Button } from '../button/Button';
+import { Text } from '../../App.styles';
 
 interface IMonthDays {
   onClick?: () => void;
+  monthNumber: number;
 }
 
-export const MonthDays: FC<IMonthDays> = ({}) => {
+export const MonthDays: FC<IMonthDays> = ({ monthNumber, onClick }) => {
   const today = new Date();
   const [date, setDate] = useState(today);
   const daysOfMonth = [];
@@ -18,22 +21,26 @@ export const MonthDays: FC<IMonthDays> = ({}) => {
 
   const days = isLeapYear(date.getFullYear()) ? DAYS_LEAP : DAYS;
 
-  for (let i = 1; i <= days[date.getMonth()]; i++) {
+  for (let i = 1; i <= days[monthNumber]; i++) {
     daysOfMonth.push(i);
   }
-  console.log(daysOfMonth);
-  const onClick = () => {
+  const onClickBRBR = () => {
     setDate(new Date());
   };
 
   return (
-    <MonthDaysWrapper onClick={onClick}>
-      {shortDays.map((day) => (
-        <DayName key={day}>{day}</DayName>
-      ))}
-      {daysOfMonth.map((day) => (
-        <DayName key={day}>{day}</DayName>
-      ))}
-    </MonthDaysWrapper>
+    <Wrapper>
+      <Button colorIcon="#FF5A30" onClick={onClick}>
+        <Text size="30px">На главную</Text>
+      </Button>
+      <MonthDaysWrapper onClick={onClickBRBR}>
+        {shortDays.map((day) => (
+          <DayName key={day}>{day}</DayName>
+        ))}
+        {daysOfMonth.map((day) => (
+          <DayName key={day}>{day}</DayName>
+        ))}
+      </MonthDaysWrapper>
+    </Wrapper>
   );
 };

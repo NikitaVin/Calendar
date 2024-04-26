@@ -18,3 +18,10 @@ export const DayName = styled.div({
     borderRight: '1px solid #FF5A30',
   },
 });
+
+export const Wrapper = styled.div({
+  width: '100%',
+  height: '100%',
+  display: 'flex',
+  flexDirection: 'column',
+});
